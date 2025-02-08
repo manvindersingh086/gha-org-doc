@@ -1,0 +1,12 @@
+name : dependent_jobs
+on : [push]
+jobs :
+  execute_parent_jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - run : echo " Running Parent Job "
+  execute_child_job:
+    needs: execute_parent_job
+    runs-on: ubuntu-latest
+    steps:
+      - run : echo " Running child job "
